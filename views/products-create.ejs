@@ -1,0 +1,42 @@
+<%- include('layout/header')-%>
+    <div class="container p-4 text-right">
+        Options Panel
+    </div>
+    <div class="container">
+        <h1 class="">
+            <%= typeof fields !== 'undefined' ? 'Editar Producto' : 'Crear Producto' %>
+        </h1>
+        <p class="lead mb-4">Llena los campos con la informacion del producto.</p>
+        <form action="/admin/products<%= typeof fields !== 'undefined' ? '/update/'+fields.id : '' %>" method="POST">
+            <div class="form-group">
+                <label for="nameInput">Nombre</label>
+                <input id="nameInput" class="form-control" type="text" name="name" value="<%= typeof fields !== 'undefined' ? fields.name : '' %>"
+                />
+            </div>
+            <div class="form-group">
+                <label for="descInput">Descripcion del Producto</label>
+                <textarea id="descInput" class="form-control" name="description"><%= typeof fields !== 'undefined' ? fields.description : '' %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="categoryInput">Categoria</label>
+                <select id="categoryInput" class="form-control" name="category">
+                    <% if(typeof categories !== 'undefined' && categories.length > 0){ %>
+                        <% categories.forEach(category=> { %>
+                            <option value="<%= category._id %>" <%=typeof fields !=='undefined' && fields.category.name===category.name ? 'selected'
+                                : '' %>>
+                                <%= category.name %>
+                            </option>
+                            <%}) 
+                    }
+                    %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pictureInput">Imagen</label>
+                <%- include('layout/image-picker') %>
+            </div>
+            <button class="btn btn-primary" type="submit"><%= typeof fields !== 'undefined' ? 'Editar Producto' : 'Agregar Producto' %></button>
+        </form>
+    </div>
+
+    <%- include('layout/footer')-%>

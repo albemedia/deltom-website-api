@@ -1,0 +1,34 @@
+<%- include('layout/header')-%>
+    <div class="container p-4 text-right">
+        <a href="/admin/categories/create" class="btn btn-primary">Crear Categoría</a>
+    </div>
+    <div class="container">
+        <h1 class="">Categor&iacute;as</h1>
+        <p class="lead mb-4">Selecciona una categoría para mostrar los productos correspondientes.</p>
+        <ul class="categories-selector">
+            <% if(typeof categories !== 'undefined' && categories.length > 0){ %>
+                <% categories.forEach(category => { %>
+
+                    <li class="categories-selector-card">
+                        <a href="/admin/categories/<%= category._id %>/products">
+                            <div class="card-image-container">
+
+                                <div class="card-title">
+                                    <span class="card-title-text"><%= category.name %></span>
+                                </div>
+                                <img src="/images/<%= category.representativeImage !== null ? category.representativeImage.filename : '' %>" />
+                            </div>
+                        </a>
+                        <div class="options">
+                            <a class="edit" href="/admin/categories/edit/<%= category._id %>"><i class="far fa-edit"></i></a>
+                            <a class="delete" href="/admin/categories/delete/<%= category._id %>"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </li>
+
+                    <% });
+        }
+        %>
+        </ul>
+    </div>
+
+    <%- include('layout/footer')-%>

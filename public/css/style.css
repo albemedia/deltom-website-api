@@ -1,0 +1,115 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.i-nm {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: block;
+  color: #909090;
+  transition: color 0.5s;
+}
+
+.active {
+  color: #428ac5;
+}
+
+.nav-link:hover {
+  color: #4d4d4d;
+}
+
+#subnav {
+  border-bottom: 1px solid #efefef;
+}
+
+/*
+Categories Selector
+*/
+
+ul.categories-selector {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+}
+
+ul.categories-selector li.categories-selector-card {
+  margin: 0px 10px 10px 0px;
+  float: left;
+}
+
+ul.categories-selector li.categories-selector-card .card-image-container {
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+ul.categories-selector
+  li.categories-selector-card
+  .card-image-container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: none;
+  width: 100%;
+  height: 100%;
+  transition: background 0.2s ease-in;
+}
+
+ul.categories-selector
+  li.categories-selector-card
+  .card-image-container:hover::before {
+  background: rgba(255, 255, 255, 0.397);
+}
+
+ul.categories-selector
+  li.categories-selector-card
+  .card-image-container
+  .card-title {
+  width: 100%;
+  position: absolute;
+  top: 80%;
+  text-align: center;
+  margin: 0;
+}
+
+.card-title-text {
+  color: white;
+  font-size: 1.7rem;
+  text-shadow: 2px 2px 4px #202020;
+}
+
+ul.categories-selector li .options {
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+  margin: 0;
+  border-left: 1px solid #efefef;
+  border-right: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.options a.delete {
+  color: red;
+}
+
+.options a.edit {
+  color: rgb(18, 94, 192);
+}
+
+ul.categories-selector li.categories-selector-card .card-image-container img {
+  height: 100%;
+  width: auto;
+}

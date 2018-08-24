@@ -1,0 +1,33 @@
+<%- include('layout/header')-%>
+    <div class="container p-4 text-right">
+        Options Panel
+    </div>
+    <div class="container">
+        <h1 class="">
+            <%= typeof fields !== 'undefined' ? 'Editar Highlight' : 'Crear Highlight' %>
+        </h1>
+        <p class="lead mb-4">Llena los siguientes campos</p>
+        <form action="/admin/website/highlights<%= typeof fields !== 'undefined' ? '/update/'+fields.id : '' %>" method="POST">
+            <div class="form-group">
+                <label for="nameInput">Titulo</label>
+                <input id="nameInput" class="form-control" type="text" name="title" value="<%= typeof fields !== 'undefined' ? fields.title : '' %>"
+                />
+            </div>
+            <div class="form-group">
+                <label for="descInput">Texto</label>
+                <textarea rows="8" id="descInput" class="form-control" name="description"><%= typeof fields !== 'undefined' ? fields.description : '' %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="linkInput">Enlace</label>
+                <input id="linkInput" class="form-control" type="text" name="redirectTo" placeholder="http:// o /products/" value="<%= typeof fields !== 'undefined' ? fields.redirectTo : '' %>"
+                />
+            </div>
+            <div class="form-group">
+                <label for="pictureInput">Imagen</label>
+                <%- include('layout/image-picker') %>
+            </div>
+            <button class="btn btn-primary" type="submit"><%= typeof fields !== 'undefined' ? 'Editar Highlight' : 'Agregar Highlight' %></button>
+        </form>
+    </div>
+
+    <%- include('layout/footer')-%>

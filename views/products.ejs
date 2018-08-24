@@ -1,0 +1,43 @@
+<%- include('layout/header')-%>
+    <div class="container p-4 text-right">
+        <a href="/admin/products/create" class="btn btn-primary">Agregar Producto</a>
+    </div>
+    <div class="container">
+        <h1 class="">Productos</h1>
+        <p class="lead mb-4">Selecciona una categoría para mostrar los productos correspondientes.</p>
+        <div class="row">
+            <% if(typeof products !== 'undefined' && products.length > 0){ %>
+                <% products.forEach(product => { %>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <% if(product.picture !== null){ %>
+                                <img class="card-img-top" src="/images/<%= product.picture.filename %>" />
+                                <% }else{ %>
+
+                                    <% } %>
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%= product.name %>
+                                            </h5>
+                                            <p class="card-text">
+                                                <%= product.description %>
+                                            </p>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="/admin/products/edit/<%= product._id %>" class="btn btn-primary btn-sm">Editar</a>
+                                            <a href="/admin/products/delete/<%= product._id %>" class="btn btn-danger btn-sm">Eliminar</a>
+                                        </div>
+                        </div>
+                    </div>
+                    <% });
+                }else{
+                %>
+                        <div class="alert alert-info" role="alert">
+                            No existen productos aun para esta categoría
+                        </div>
+                        <% } %>
+        </div>
+    </div>
+
+    <%- include('layout/footer')-%>

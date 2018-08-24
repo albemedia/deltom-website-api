@@ -1,0 +1,11 @@
+<select id="imagePicker" class="image-picker" name="imagePicked">
+    <% if(typeof images !== 'undefined'){ %>
+        <% images.forEach(image=> { %>
+            <option data-img-src="/images/<%= image.filename %>" value="<%= image._id %>" <%=typeof fields !=='undefined' && fields.filename===image.filename
+                ? 'selected' : '' %>>
+                <%= image.filename %>
+            </option>
+            <%}) 
+        }
+        %>
+</select>

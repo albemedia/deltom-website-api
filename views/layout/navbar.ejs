@@ -1,0 +1,43 @@
+<nav class="navbar fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Admin Panel</a>
+</nav>
+<div class="container-fuild p-2" id="subnav">
+    <div class="container row justify-content-center mx-auto" id="navLinks">
+        <div class="col-md-2 text-center i-nm">
+            <a class="nav-link <%= typeof currentPage !== 'undefined' && currentPage==='home' ? 'active' : ''  %>" href="/">
+                <i class="fas fa-home fa-2x"></i>
+                <p>Inicio</p>
+            </a>
+        </div>
+        <div class="col-md-2 text-center i-nm">
+            <a class="nav-link <%= typeof currentPage !== 'undefined' && currentPage==='website' ? 'active' : ''  %>" href="/admin/website/highlights/create">
+                <i class="far fa-edit fa-2x"></i>
+                <p>Sitio Web</p>
+            </a>
+        </div>
+        <div class="col-md-2 text-center i-nm">
+            <a class="nav-link <%= typeof currentPage !== 'undefined' && currentPage==='gallery' ? 'active' : ''  %>" href="/admin/upload">
+                <i class="far fa-image fa-2x"></i>
+                <p>Imagenes</p>
+            </a>
+        </div>
+        <div class="col-md-2 text-center i-nm">
+            <a class="nav-link <%= typeof currentPage !== 'undefined' && currentPage==='gallery' ? 'active' : ''  %>" href="/admin/gallery">
+                <i class="fas fa-th fa-2x"></i>
+                <p>Galeria</p>
+            </a>
+        </div>
+        <div class="col-md-2 text-center i-nm">
+            <a class="nav-link <%= typeof currentPage !== 'undefined' && currentPage==='products' ? 'active' : ''  %>" href="/admin/categories">
+                <i class="fas fa-box fa-2x"></i>
+                <p>Productos</p>
+            </a>
+        </div>
+        <div class="col-md-2 text-center i-nm">
+            <a class="nav-link" href="#">
+                <i class="fas fa-box fa-2x"></i>
+                <p>Productos</p>
+            </a>
+        </div>
+    </div>
+</div>

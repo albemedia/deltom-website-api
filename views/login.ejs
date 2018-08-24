@@ -1,0 +1,29 @@
+<%- include('layout/header')-%>
+    <div class="container p-4 text-right">
+
+    </div>
+    <div class="container">
+        <div class="w-50 mx-auto">
+            <h1>
+                Login
+            </h1>
+            <p class="lead">Debes iniciar sesion para poder utilizar el administrador</p>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <label for="emailInput">E-mail</label>
+                            <input id="emailInput" class="form-control" type="text" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="passInput">Contraseña</label>
+                            <input id="passInput" class="form-control" type="password" name="password" />
+                        </div>
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('layout/footer')-%>

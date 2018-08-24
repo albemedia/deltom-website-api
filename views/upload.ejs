@@ -1,0 +1,23 @@
+<%- include('layout/header')-%>
+    <div class="container p-4 text-right">
+        Options Panel
+    </div>
+    <div class="container">
+        <h1>Subir Imagenes</h1>
+        <p class="lead">
+            Escribe una descripcion de la imagen y selecciona el archivo.
+        </p>
+        <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="descInput">Descripción</label>
+                <input id="descInput" class="form-control" type="text" name="description" />
+            </div>
+            <div class="form-group">
+                <label for="fileInput">Selecciona el Archivo</label>
+                <input id="fileInput" class="form-control" type="file" name="file" />
+            </div>
+            <button class="btn btn-primary" type="submit">Subir Imagen</button>
+        </form>
+    </div>
+
+    <%- include('layout/footer')-%>
