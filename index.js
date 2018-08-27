@@ -8,6 +8,7 @@ const db = require('./lib/database');
 const ApiRouter = require('./routes/api');
 const AdminRouter = require('./routes/admin');
 const config = require('./lib/config');
+const middlewares = require('./middlewares');
 
 const app = express();
 //  Connect to Database
@@ -34,19 +35,11 @@ config.initialize();
 //  View Engine
 app.set('view engine', 'ejs');
 
-const requireAuth = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-};
-
 //  Routes
 app.use('/api', ApiRouter);
 app.use('/admin', AdminRouter);
 
-app.get('/', requireAuth, (req, res) => {
+app.get('/', middlewares.requireAuth, (req, res) => {
   res.redirect('/admin/');
 });
 

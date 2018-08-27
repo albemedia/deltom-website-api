@@ -113,3 +113,35 @@ ul.categories-selector li.categories-selector-card .card-image-container img {
   height: 100%;
   width: auto;
 }
+
+.highlight-image-container {
+  overflow: hidden;
+  position: relative;
+  height: 500px;
+}
+
+.highlight-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+aside {
+  float: left;
+  width: 300px;
+}
+
+main {
+  float:left;
+  width: 100%;
+}
+
+footer {
+  width: 100%;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

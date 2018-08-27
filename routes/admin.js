@@ -35,7 +35,13 @@ router.get(
   middlewares.getAllImages,
   WebsiteController.highlights.create,
 );
+router.get(
+  '/website/highlights/edit/:Id',
+  middlewares.getAllImages,
+  WebsiteController.highlights.edit,
+);
 router.get('/website/highlights', WebsiteController.highlights.show);
+router.get('/api/highlights', WebsiteController.highlights.apiShow);
 router.post('/website/highlights', WebsiteController.highlights.store);
 
 module.exports = router;

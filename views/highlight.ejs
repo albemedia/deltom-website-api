@@ -1,0 +1,27 @@
+<%- include('layout/header')%>
+
+    <%- include('website-options') %>
+
+        <% if(typeof highlights !== 'undefined' && highlights.length > 0){ %>
+
+            <% highlights.forEach(highlight => { %>
+                <div class="container-fluid p-0 m-0 row">
+                    <div class="col-sm-6 text-center p-5 valign">
+                        <h1 class="display-4">
+                            <%= highlight.title %>
+                        </h1>
+                        <p class="lead">
+                            <%= highlight.description %>
+                        </p>
+                        <a href="<%= highlight.redirectTo %>" class="btn btn-outline-dark btn-lg">Leer Mas</a>
+                    </div>
+                    <div class="col-sm-6 text-center p-0">
+                        <div class="highlight-image-container">
+                            <img src="/images/<%= highlight.image.filename %>" />
+                        </div>
+                    </div>
+                </div>
+                <% });
+                 } %>
+
+                    <%- include('layout/footer') %>

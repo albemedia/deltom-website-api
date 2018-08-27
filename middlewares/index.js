@@ -11,6 +11,13 @@ const middlewares = {
         res.send(error.message);
       });
   },
+  requireAuth: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      res.redirect('/login');
+    }
+  },
 };
 
 module.exports = middlewares;

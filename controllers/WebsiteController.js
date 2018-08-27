@@ -17,11 +17,21 @@ const opts = {
           res.send(error.message);
         });
     },
-    show: (req, res) => {
+    apiShow: (req, res) => {
       Highlight.find()
         .populate({ path: 'image', select: 'url description filename -_id' })
         .then((highlights) => {
           res.send(highlights);
+        })
+        .catch((error) => {
+          res.send(error.message);
+        });
+    },
+    show: (req, res) => {
+      Highlight.find()
+        .populate({ path: 'image', select: 'url description filename -_id' })
+        .then((highlights) => {
+          res.render('highlight', { highlights });
         })
         .catch((error) => {
           res.send(error.message);
@@ -33,6 +43,25 @@ const opts = {
         scriptFile: 'imageSelect',
         currentPage: 'website',
       });
+    },
+    edit: (req, res) => {
+      Highlight.find({ _id: req.params.Id })
+        .populate({ path: 'image', select: 'url description filename -_id' })
+        .then((highlights) => {
+          const fields = {
+            title: highlights[0].title,
+            description: highlights[0].description,
+            redirectTo: highlights[0].redirectTo,
+            image: highlights[0].image,
+            filename: highlights[0].image.filename,
+          };
+          res.render('highlight-create', {
+            images: req.images,
+            scriptFile: 'imageSelect',
+            currentPage: 'website',
+            fields,
+          });
+        });
     },
   },
 };
