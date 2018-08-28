@@ -1,8 +1,9 @@
-<aside>
-    <ul class="list-group">
-        <li class="list-group-item active">Empresa</li>
-        <li class="list-group-item">Nosotros</li>
-        <li class="list-group-item">Highlights</li>
-        <li class="list-group-item">Caroussel</li>
-    </ul>
-</aside>
+<div class="col-md-3">
+    <div class="list-group">
+        <a href="/admin/website/company" class="list-group-item list-group-item-action <%= typeof subnavOption !== 'undefined' && subnavOption==='empresa' ? 'active' : ''  %>">Empresa</a>
+        <a href="" class="list-group-item list-group-item-action <%= typeof subnavOption !== 'undefined' && subnavOption==='nosotros' ? 'active' : ''  %>">Nosotros</a>
+        <a href="" class="list-group-item list-group-item-action <%= typeof subnavOption !== 'undefined' && subnavOption==='jumbotron' ? 'active' : ''  %>">Jumbotron</a>
+        <a href="/admin/website/highlights" class="list-group-item list-group-item-action <%= typeof subnavOption !== 'undefined' && subnavOption==='highlights' ? 'active' : ''  %>">Highlights</a>
+        <a href="" class="list-group-item list-group-item-action <%= typeof subnavOption !== 'undefined' && subnavOption==='caroussel' ? 'active' : ''  %>">Caroussel</a>
+    </div>
+</div>

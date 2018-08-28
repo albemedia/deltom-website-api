@@ -126,20 +126,6 @@ ul.categories-selector li.categories-selector-card .card-image-container img {
   left: 0;
 }
 
-aside {
-  float: left;
-  width: 300px;
-}
-
-main {
-  float:left;
-  width: 100%;
-}
-
-footer {
-  width: 100%;
-}
-
 .clearfix::after {
   content: "";
   clear: both;

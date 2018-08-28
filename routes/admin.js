@@ -44,4 +44,7 @@ router.get('/website/highlights', WebsiteController.highlights.show);
 router.get('/api/highlights', WebsiteController.highlights.apiShow);
 router.post('/website/highlights', WebsiteController.highlights.store);
 
+router.get('/website/company', WebsiteController.company.edit);
+router.post('/website/company', WebsiteController.company.update);
+
 module.exports = router;

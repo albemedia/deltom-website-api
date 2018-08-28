@@ -1,0 +1,21 @@
+<%- include('layout/header')%>
+    <div class="container mt-5">
+        <div class="row">
+            <%- include('website-options') %>
+
+                <div class="col-md-9">
+                    <h2 style="margin-bottom: 1rem;">Highlights</h2>
+                    <% if(typeof highlights !== 'undefined' && highlights.length > 0){ %>
+                        <ul class="list-group list-group-flush">
+                            <% highlights.forEach(highlight => { %>
+                                <li class="list-group-item">
+                                    <%= highlight.title %>
+                                </li>
+                                <% }); %>
+                        </ul>
+                        <% } %>
+                </div>
+        </div>
+    </div>
+
+    <%- include('layout/footer') %>

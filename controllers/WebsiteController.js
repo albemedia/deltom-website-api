@@ -1,4 +1,5 @@
 const Highlight = require('../models/Highlight');
+const Company = require('../models/Company');
 
 //  Specific Functions
 const opts = {
@@ -31,7 +32,11 @@ const opts = {
       Highlight.find()
         .populate({ path: 'image', select: 'url description filename -_id' })
         .then((highlights) => {
-          res.render('highlight', { highlights });
+          res.render('highlights-list', {
+            highlights,
+            currentPage: 'website',
+            subnavOption: 'highlights',
+          });
         })
         .catch((error) => {
           res.send(error.message);
@@ -61,7 +66,64 @@ const opts = {
             currentPage: 'website',
             fields,
           });
+        })
+        .catch((error) => {
+          res.send('Objeto no encontrado, ERROR: '.concat(error.message));
         });
+    },
+  },
+
+  company: {
+    edit: (req, res) => {
+      Company.find()
+        .then((company) => {
+          const fields = {
+            id: company[0].id,
+            name: company[0].name,
+            address: {
+              street: company[0].address.street,
+              streetnumber: company[0].address.streetnumber,
+              city: company[0].address.city,
+              state: company[0].address.state,
+              country: company[0].address.country,
+            },
+            contact: {
+              email: company[0].contact.email,
+              phone: company[0].contact.phone,
+            },
+          };
+          res.render('company-create', { currentPage: 'website', subnavOption: 'empresa', fields });
+        })
+        .catch((error) => {
+          res.send(error.message);
+        });
+    },
+    update: (req, res) => {
+      Company.findOneAndUpdate(
+        { _id: req.body.id },
+        {
+          name: req.body.name,
+          address: {
+            street: req.body.street,
+            streetnumber: req.body.streetnumber,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+          },
+          contact: {
+            email: req.body.email,
+            phone: req.body.phone,
+          },
+        },
+        { runValidators: true },
+        (err) => {
+          if (err) {
+            res.send(err.errors);
+          } else {
+            res.redirect('/admin/website/company');
+          }
+        },
+      );
     },
   },
 };
@@ -69,6 +131,7 @@ const opts = {
 class WebsiteController {
   constructor(options) {
     this.highlights = options.highlights;
+    this.company = options.company;
   }
 
   show(req, res) {

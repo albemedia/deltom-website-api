@@ -1,0 +1,62 @@
+<%- include('layout/header')%>
+    <div class="container mt-5">
+        <div class="row">
+            <%- include('website-options') %>
+
+                <div class="col-md-9">
+                    <h2 style="margin-bottom: 1rem;">Empresa</h2>
+                    <form action="/admin/website/company" method="POST">
+                        <input type="hidden" name="id" value="<%= typeof fields !== 'undefined' ? fields.id : '' %>" />
+                        <div class="form-group">
+                            <label for="companyName">Nombre</label>
+                            <input id="companyName" class="form-control" type="text" name="name" value="<%= typeof fields !== 'undefined' ? fields.name : '' %>"
+                            />
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <label for="companyStreet">Calle</label>
+                                <input type="text" id="companyStreet" class="form-control" name="street" value="<%= typeof fields !== 'undefined' ? fields.address.street : '' %>"
+                                />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="companyStreetNumber">Numero</label>
+                                <input type="text" id="companyStreetNumber" class="form-control" name="streetnumber" value="<%= typeof fields !== 'undefined' ? fields.address.streetnumber : '' %>"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="companyCity">Ciudad</label>
+                                <input type="text" id="companyCity" class="form-control" name="city" value="<%= typeof fields !== 'undefined' ? fields.address.city : '' %>"
+                                />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="companyState">Estado</label>
+                                <input type="text" id="companyState" class="form-control" name="state" value="<%= typeof fields !== 'undefined' ? fields.address.state : '' %>"
+                                />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="companyCountry">Pais</label>
+                                <input type="text" id="companyCountry" class="form-control" name="country" value="<%= typeof fields !== 'undefined' ? fields.address.country : '' %>"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="companyEmail">Email</label>
+                                <input type="text" id="companyEmail" class="form-control" name="email" value="<%= typeof fields !== 'undefined' ? fields.contact.email : '' %>"
+                                />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="companyPhone">Telefono</label>
+                                <input type="text" id="companyPhone" class="form-control" name="phone" value="<%= typeof fields !== 'undefined' ? fields.contact.phone : '' %>"
+                                />
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Actualizar Informacion</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+    <%- include('layout/footer') %>
