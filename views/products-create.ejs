@@ -33,6 +33,9 @@
             </div>
             <div class="form-group">
                 <label for="pictureInput">Imagen</label>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#imagePicker">
+                    Seleccionar Imagen
+                </button>
                 <%- include('layout/image-picker') %>
             </div>
             <button class="btn btn-primary" type="submit"><%= typeof fields !== 'undefined' ? 'Editar Producto' : 'Agregar Producto' %></button>

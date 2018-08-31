@@ -1,11 +1,31 @@
-<select id="imagePicker" class="image-picker" name="imagePicked">
-    <% if(typeof images !== 'undefined'){ %>
-        <% images.forEach(image=> { %>
-            <option data-img-src="/images/<%= image.filename %>" value="<%= image._id %>" <%=typeof fields !=='undefined' && fields.filename===image.filename
-                ? 'selected' : '' %>>
-                <%= image.filename %>
-            </option>
-            <%}) 
-        }
-        %>
-</select>
+<div id="selectedImageContainer" class="selected-image-container">
+    <div id="selectedImage" class="selected-image"></div>
+</div>
+<div class="modal fade" id="imagePicker" tabindex="-1" role="dialog" aria-labelledby="imagePickerTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imagePickerTitle">Selecciona una Imagen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select id="imagePicker" class="image-picker" name="imagePicked">
+                    <% if(typeof images !== 'undefined'){ %>
+                        <% images.forEach(image=> { %>
+                            <option data-img-src="/images/<%= image.filename %>" value="<%= image._id %>" <%=typeof fields !=='undefined' && fields.filename===image.filename
+                                ? 'selected' : '' %>>
+                                <%= image.filename %>
+                            </option>
+                            <%}) 
+                    }
+                    %>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

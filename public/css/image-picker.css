@@ -50,3 +50,35 @@ ul.thumbnails.image_picker_selector li .thumbnail img {
 ul.thumbnails.image_picker_selector li .thumbnail.selected {
   background: #0088cc;
 }
+
+.selected-image-container {
+  margin-top: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 6px;
+  width: 164px;
+}
+
+.selected-image {
+  margin-bottom: 20px;
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  background: transparent;
+}
+
+.selected-image img {
+  -webkit-user-drag: none;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

@@ -9,11 +9,12 @@
                         <ul class="list-group list-group-flush">
                             <% highlights.forEach(highlight => { %>
                                 <li class="list-group-item">
-                                    <%= highlight.title %>
+                                    <a href="/admin/website/highlights/edit/<%= highlight.id %>"><%= highlight.title %></a>
                                 </li>
                                 <% }); %>
                         </ul>
                         <% } %>
+                            <a href="/admin/website/highlights/create" class="btn btn-primary mt-4">Crear Highlight</a>
                 </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 const Highlight = require('../models/Highlight');
 const Company = require('../models/Company');
+const About = require('../models/About');
 
 //  Specific Functions
 const opts = {
@@ -13,16 +14,6 @@ const opts = {
       })
         .then(() => {
           res.send('Created');
-        })
-        .catch((error) => {
-          res.send(error.message);
-        });
-    },
-    apiShow: (req, res) => {
-      Highlight.find()
-        .populate({ path: 'image', select: 'url description filename -_id' })
-        .then((highlights) => {
-          res.send(highlights);
         })
         .catch((error) => {
           res.send(error.message);
@@ -54,6 +45,7 @@ const opts = {
         .populate({ path: 'image', select: 'url description filename -_id' })
         .then((highlights) => {
           const fields = {
+            id: highlights[0].id,
             title: highlights[0].title,
             description: highlights[0].description,
             redirectTo: highlights[0].redirectTo,
@@ -126,12 +118,49 @@ const opts = {
       );
     },
   },
+
+  about: {
+    edit: (req, res) => {
+      About.find()
+        .then((about) => {
+          const fields = {
+            id: about[0].id,
+            resume: about[0].resume,
+            mission: about[0].mission,
+            vision: about[0].vision,
+          };
+          res.render('about-create', { currentPage: 'website', subnavOption: 'nosotros', fields });
+        })
+        .catch((error) => {
+          res.send(error.message);
+        });
+    },
+    update: (req, res) => {
+      About.findOneAndUpdate(
+        { _id: req.body.id },
+        {
+          resume: req.body.resume,
+          mission: req.body.mission,
+          vision: req.body.vision,
+        },
+        { runValidators: true },
+        (err) => {
+          if (err) {
+            res.send(err.errors);
+          } else {
+            res.redirect('/admin/website/about');
+          }
+        },
+      );
+    },
+  },
 };
 
 class WebsiteController {
   constructor(options) {
     this.highlights = options.highlights;
     this.company = options.company;
+    this.about = options.about;
   }
 
   show(req, res) {

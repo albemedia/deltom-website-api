@@ -41,10 +41,12 @@ router.get(
   WebsiteController.highlights.edit,
 );
 router.get('/website/highlights', WebsiteController.highlights.show);
-router.get('/api/highlights', WebsiteController.highlights.apiShow);
 router.post('/website/highlights', WebsiteController.highlights.store);
 
 router.get('/website/company', WebsiteController.company.edit);
 router.post('/website/company', WebsiteController.company.update);
+
+router.get('/website/about', WebsiteController.about.edit);
+router.post('/website/about', WebsiteController.about.update);
 
 module.exports = router;

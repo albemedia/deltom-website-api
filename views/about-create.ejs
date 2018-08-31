@@ -1,0 +1,30 @@
+<%- include('layout/header')%>
+    <div class="container mt-5">
+        <div class="row">
+            <%- include('website-options') %>
+
+                <div class="col-md-9">
+                    <h2 style="margin-bottom: 1rem;">Nosotros</h2>
+                    <form action="/admin/website/about" method="POST">
+                        <input type="hidden" name="id" value="<%= typeof fields !== 'undefined' ? fields.id : '' %>" />
+                        <div class="form-group">
+                            <label for="aboutResume">Resumen</label>
+                            <textarea rows="6" id="aboutResume" class="form-control" name="resume"><%= typeof fields !== 'undefined' ? fields.resume : '' %></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="aboutMission">Misión</label>
+                            <textarea rows="6" id="aboutMission" class="form-control" name="mission"><%= typeof fields !== 'undefined' ? fields.mission : '' %></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="aboutVision">Visión</label>
+                            <textarea rows="6" id="aboutVision" class="form-control" name="vision"><%= typeof fields !== 'undefined' ? fields.vision : '' %></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Actualizar Informacion</button>
+                    </form>
+                </div>
+
+        </div>
+    </div>
+    </div>
+
+    <%- include('layout/footer') %>
