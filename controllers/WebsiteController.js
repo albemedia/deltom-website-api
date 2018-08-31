@@ -1,6 +1,7 @@
 const Highlight = require('../models/Highlight');
 const Company = require('../models/Company');
 const About = require('../models/About');
+const Jumbotron = require('../models/Jumbotron');
 
 //  Specific Functions
 const opts = {
@@ -154,6 +155,49 @@ const opts = {
       );
     },
   },
+
+  jumbotron: {
+    create: (req, res) => {
+      res.render('jumbotron-create', {
+        images: req.images,
+        scriptFile: 'imageSelect',
+        currentPage: 'website',
+      });
+    },
+    show: (req, res) => {
+      Jumbotron.find()
+        .populate({ path: 'image', select: 'url description filename -_id' })
+        .then((jumbotrons) => {
+          res.render('jumbotron-list', {
+            jumbotrons,
+            currentPage: 'website',
+            subnavOption: 'jumbotron',
+          });
+        })
+        .catch((error) => {
+          res.send(error.message);
+        });
+    },
+    store: (req, res) => {
+      Jumbotron.create({
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        redirectTo: req.body.redirectTo,
+        image: req.body.imagePicked,
+      }).then(() => {
+        res.redirect('/admin/website/jumbotron');
+      });
+    },
+    delete: (req, res) => {
+      Jumbotron.findOneAndRemove({ _id: req.params.Id })
+        .then(() => {
+          res.redirect('/admin/website/jumbotron');
+        })
+        .catch((error) => {
+          res.send(error.message);
+        });
+    },
+  },
 };
 
 class WebsiteController {
@@ -161,6 +205,7 @@ class WebsiteController {
     this.highlights = options.highlights;
     this.company = options.company;
     this.about = options.about;
+    this.jumbotron = options.jumbotron;
   }
 
   show(req, res) {

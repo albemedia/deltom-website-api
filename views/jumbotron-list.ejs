@@ -1,0 +1,24 @@
+<%- include('layout/header')%>
+    <div class="container mt-5">
+        <div class="row">
+            <%- include('website-options') %>
+
+                <div class="col-md-9">
+                    <h2 style="margin-bottom: 1rem;">Jumbotron</h2>
+                    <% if(typeof jumbotrons !== 'undefined' && jumbotrons.length > 0){ %>
+                        <ul class="list-group list-group-flush">
+                            <% jumbotrons.forEach(jumbotron => { %>
+                                <li class="list-group-item">
+                                    <a href="/admin/website/jumbotron/edit/<%= jumbotron.id %>"><%= jumbotron.title %></a>
+                                    <a class="delete float-right" href="/admin/website/jumbotron/delete/<%= jumbotron._id %>"><i
+                                            class="fas fa-trash-alt"></i></a>
+                                </li>
+                                <% }); %>
+                        </ul>
+                        <% } %>
+                            <a href="/admin/website/jumbotron/create" class="btn btn-primary mt-4">Crear Jumbotron</a>
+                </div>
+        </div>
+    </div>
+
+    <%- include('layout/footer') %>

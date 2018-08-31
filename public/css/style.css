@@ -101,7 +101,7 @@ ul.categories-selector li .options {
   border-radius: 0px 0px 4px 4px;
 }
 
-.options a.delete {
+a.delete {
   color: red;
 }
 

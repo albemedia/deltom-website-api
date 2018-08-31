@@ -49,4 +49,13 @@ router.post('/website/company', WebsiteController.company.update);
 router.get('/website/about', WebsiteController.about.edit);
 router.post('/website/about', WebsiteController.about.update);
 
+router.get(
+  '/website/jumbotron/create',
+  middlewares.getAllImages,
+  WebsiteController.jumbotron.create,
+);
+router.get('/website/jumbotron', WebsiteController.jumbotron.show);
+router.get('/website/jumbotron/delete/:Id', WebsiteController.jumbotron.delete);
+router.post('/website/jumbotron', WebsiteController.jumbotron.store);
+
 module.exports = router;

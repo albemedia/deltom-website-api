@@ -18,7 +18,7 @@ class WebImagesController {
           filename: req.file.filename,
         })
           .then(() => {
-            res.redirect('/admin/upload');
+            res.redirect('/admin/gallery');
           })
           .catch((error) => {
             res.send(error.message);
