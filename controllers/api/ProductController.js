@@ -2,16 +2,19 @@ const Product = require('../../models/Product');
 
 class ProductController {
   show(req, res) {
-    const result = {};
+    const arr = [];
+    const cat = {};
     Product.find()
       .select('_id name category')
       .then((products) => {
         req.categories.forEach((category) => {
-          result[category.name] = products.filter(
-            product => product.category.toString() === category.id,
+          arr.push(
+            (cat[category.name.toLowerCase()] = products.filter(
+              product => product.category.toString() === category.id,
+            )),
           );
         });
-        res.send(result);
+        res.send(arr);
       });
 
     return this;

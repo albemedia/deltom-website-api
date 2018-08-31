@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 const uuid = require('uuid');
+const cors = require('cors');
 const auth = require('./lib/auth');
 const db = require('./lib/database');
 const ApiRouter = require('./routes/api');
@@ -15,6 +16,7 @@ const app = express();
 db.init();
 
 //  Middlewares
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
