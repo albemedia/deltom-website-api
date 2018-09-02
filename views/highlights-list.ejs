@@ -10,7 +10,8 @@
                             <% highlights.forEach(highlight => { %>
                                 <li class="list-group-item">
                                     <a href="/admin/website/highlights/edit/<%= highlight.id %>"><%= highlight.title %></a>
-                                    <a class="float-left delete" href="/admin/categories/delete/<%= category._id %>"><i class="fas fa-trash-alt"></i></a>
+                                    <a class="float-right delete" href="/admin/website/highlights/delete/<%= highlight.id %>"><i
+                                            class="fas fa-trash-alt"></i></a>
                                 </li>
                                 <% }); %>
                         </ul>

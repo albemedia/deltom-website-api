@@ -87,7 +87,10 @@ class CategoryController {
         { path: 'picture', select: 'url description filename -_id' },
       ])
       .then((products) => {
-        res.render('products', { products, currentPage: 'products' });
+        res.render('products', {
+          products,
+          currentPage: 'products',
+        });
       });
     return this;
   }

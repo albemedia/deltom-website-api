@@ -14,6 +14,7 @@ const middlewares = {
   },
   getCategories: (req, res, next) => {
     Category.find()
+      .populate({ path: 'representativeImage', select: 'url filename' })
       .then((categories) => {
         req.categories = categories;
         next();

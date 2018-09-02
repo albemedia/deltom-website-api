@@ -3,8 +3,10 @@
         <a href="/admin/products/create" class="btn btn-primary">Agregar Producto</a>
     </div>
     <div class="container">
-        <h1 class="">Productos</h1>
-        <p class="lead mb-4">Selecciona una categoría para mostrar los productos correspondientes.</p>
+        <h1 class="">
+            Productos
+        </h1>
+        <p class="lead mb-4">Listado de productos de esta categoría</p>
         <div class="row">
             <% if(typeof products !== 'undefined' && products.length > 0){ %>
                 <% products.forEach(product => { %>

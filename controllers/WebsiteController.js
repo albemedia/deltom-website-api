@@ -14,7 +14,7 @@ const opts = {
         image: req.body.imagePicked,
       })
         .then(() => {
-          res.send('Created');
+          res.redirect('/admin/website/highlights');
         })
         .catch((error) => {
           res.send(error.message);
@@ -62,6 +62,34 @@ const opts = {
         })
         .catch((error) => {
           res.send('Objeto no encontrado, ERROR: '.concat(error.message));
+        });
+    },
+    update: (req, res) => {
+      Highlight.findOneAndUpdate(
+        { _id: req.params.Id },
+        {
+          title: req.body.title,
+          description: req.body.description,
+          redirectTo: req.body.redirectTo,
+          image: req.body.imagePicked,
+        },
+        { runValidators: true },
+        (err) => {
+          if (err) {
+            res.send(err.errors);
+          } else {
+            res.redirect('/admin/website/highlights');
+          }
+        },
+      );
+    },
+    delete: (req, res) => {
+      Highlight.findOneAndRemove({ _id: req.params.Id })
+        .then(() => {
+          res.redirect('/admin/website/highlights');
+        })
+        .catch((error) => {
+          res.send(error.message);
         });
     },
   },
@@ -184,9 +212,13 @@ const opts = {
         subtitle: req.body.subtitle,
         redirectTo: req.body.redirectTo,
         image: req.body.imagePicked,
-      }).then(() => {
-        res.redirect('/admin/website/jumbotron');
-      });
+      })
+        .then(() => {
+          res.redirect('/admin/website/jumbotron');
+        })
+        .catch((errors) => {
+          res.send(errors.message);
+        });
     },
     delete: (req, res) => {
       Jumbotron.findOneAndRemove({ _id: req.params.Id })

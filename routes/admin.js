@@ -41,7 +41,9 @@ router.get(
   WebsiteController.highlights.edit,
 );
 router.get('/website/highlights', WebsiteController.highlights.show);
+router.get('/website/highlights/delete/:Id', WebsiteController.highlights.delete);
 router.post('/website/highlights', WebsiteController.highlights.store);
+router.post('/website/highlights/update/:Id', WebsiteController.highlights.update);
 
 router.get('/website/company', WebsiteController.company.edit);
 router.post('/website/company', WebsiteController.company.update);

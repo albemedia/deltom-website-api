@@ -2,19 +2,12 @@ const Product = require('../../models/Product');
 
 class ProductController {
   show(req, res) {
-    const arr = [];
-    const cat = {};
+    console.log('Api Requested!');
     Product.find()
-      .select('_id name category')
+      .populate({ path: 'category', select: '_id name' })
+      .populate({ path: 'picture', select: 'url filename -_id' })
       .then((products) => {
-        req.categories.forEach((category) => {
-          arr.push(
-            (cat[category.name.toLowerCase()] = products.filter(
-              product => product.category.toString() === category.id,
-            )),
-          );
-        });
-        res.send(arr);
+        res.send({ categories: req.categories, products });
       });
 
     return this;

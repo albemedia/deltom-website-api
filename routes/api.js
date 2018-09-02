@@ -9,5 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/products', middlewares.getCategories, controllers.ProductController.show);
+router.get('/highlights', controllers.WebsiteController.getHighlights);
+router.get('/website', controllers.WebsiteController.getAll);
 
 module.exports = router;
