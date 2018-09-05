@@ -13,7 +13,9 @@ class WebImagesController {
         res.send('No File Selected');
       } else {
         Image.create({
-          url: req.file.destination.slice(1),
+          url: `${req.protocol}://${req.hostname}:${req.app.get('port')}/images/${
+            req.file.filename
+          }`,
           description: req.body.description,
           filename: req.file.filename,
         })
@@ -45,7 +47,7 @@ class WebImagesController {
   deleteImage(req, res) {
     Image.findOne({ _id: req.params.Id })
       .then((result) => {
-        fs.unlink(path.join(__dirname, `..${result.url}${result.filename}`), (err) => {
+        fs.unlink(path.join(__dirname, `../public/images/${result.filename}`), (err) => {
           if (err) {
             res.send(err);
           } else {

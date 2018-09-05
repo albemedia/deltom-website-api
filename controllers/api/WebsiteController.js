@@ -16,8 +16,8 @@ class WebsiteController {
     Promise.all([
       About.find().select('resume mission vision -_id'),
       Company.find().select('name address contact -_id'),
-      Highlight.find().populate({ path: 'image', select: 'filename' }),
-      Jumbotron.find(),
+      Highlight.find().populate({ path: 'image', select: 'filename url' }),
+      Jumbotron.find().populate({ path: 'image', select: 'filename url' }),
     ])
       .then((result) => {
         const data = {

@@ -27,6 +27,7 @@ app.use(
     saveUninitialized: true,
   }),
 );
+app.set('port', process.env.PORT ? process.env.PORT : '8000');
 app.use(express.static('./public'));
 
 //  Auth Config
@@ -58,6 +59,6 @@ app.post(
   }),
 );
 
-if (app.listen(8000)) {
+app.listen(app.get('port'), () => {
   console.log('Listening port 8000....');
-}
+});

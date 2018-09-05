@@ -56,8 +56,14 @@ router.get(
   middlewares.getAllImages,
   WebsiteController.jumbotron.create,
 );
+router.get(
+  '/website/jumbotron/edit/:Id',
+  middlewares.getAllImages,
+  WebsiteController.jumbotron.edit,
+);
 router.get('/website/jumbotron', WebsiteController.jumbotron.show);
 router.get('/website/jumbotron/delete/:Id', WebsiteController.jumbotron.delete);
 router.post('/website/jumbotron', WebsiteController.jumbotron.store);
+router.post('/website/jumbotron/update/:Id', WebsiteController.jumbotron.update);
 
 module.exports = router;

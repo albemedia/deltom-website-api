@@ -220,6 +220,48 @@ const opts = {
           res.send(errors.message);
         });
     },
+    edit: (req, res) => {
+      Jumbotron.find({ _id: req.params.Id })
+        .populate({ path: 'image', select: 'url description filename -_id' })
+        .then((jumbotrons) => {
+          const fields = {
+            id: jumbotrons[0].id,
+            title: jumbotrons[0].title,
+            subtitle: jumbotrons[0].subtitle,
+            redirectTo: jumbotrons[0].redirectTo,
+            image: jumbotrons[0].image,
+            filename: jumbotrons[0].image.filename,
+          };
+          res.render('jumbotron-create', {
+            images: req.images,
+            scriptFile: 'imageSelect',
+            currentPage: 'website',
+            fields,
+          });
+        })
+        .catch((error) => {
+          res.send('Objeto no encontrado, ERROR: '.concat(error.message));
+        });
+    },
+    update: (req, res) => {
+      Jumbotron.findOneAndUpdate(
+        { _id: req.params.Id },
+        {
+          title: req.body.title,
+          subtitle: req.body.subtitle,
+          redirectTo: req.body.redirectTo,
+          image: req.body.imagePicked,
+        },
+        { runValidators: true },
+        (err) => {
+          if (err) {
+            res.send(err.errors);
+          } else {
+            res.redirect('/admin/website/jumbotron');
+          }
+        },
+      );
+    },
     delete: (req, res) => {
       Jumbotron.findOneAndRemove({ _id: req.params.Id })
         .then(() => {
